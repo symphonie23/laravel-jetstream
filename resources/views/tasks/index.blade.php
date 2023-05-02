@@ -1,6 +1,4 @@
-@extends('tasks.layout')
-@section('content')
-
+<x-app-layout>
 <div class="row d-flex justify-content-center">
   <div class="col-md-12">
     <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
@@ -48,4 +46,4 @@
         </div>
     </div>
 </div>
-@endsection
+</x-app-layout>
