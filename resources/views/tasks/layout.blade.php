@@ -236,60 +236,9 @@ font-size:80px;
 
     </script>
   </head>
-  <body style="background-image: url('https://images.unsplash.com/photo-1678776682765-25854662bbdb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2081&q=80'); background-size: cover; background-attachment: fixed; background-repeat: no-repeat;">
+  <body>
     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 130%; background-color: rgba(0, 0, 0, 0.5); z-index: -1;"></div>
-      <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark bg-transparent">
-          <div class="container">
-            <!--Laravel logo-->
-            <a class="navbar-brand" href="{{ url('/') }}">
-              {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <!-- Left Side Of Navbar -->
-              <ul class="navbar-nav me-auto"></ul>
-              <!-- Right Side Of Navbar -->
-              <ul class="navbar-nav ms-auto">
-                <!-- Authentication Links -->
-                @guest
-                  @if (Route::has('login'))
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                  @endif
-                  @if (Route::has('register'))
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                  @endif
-                  @else
-                    <li class="nav-item dropdown">
-                      <a id="navbarDropdown" style="color: #2AAA8A;" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{{ route('profile.show') }}">
-                          {{ __('Profile') }}
-                        </a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-                          {{ __('Logout') }}
-                        </a>
-                        
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                          @csrf
-                        </form>
-                      </div>
-                    </li>
-                @endguest
-              </ul>
-            </div>
-          </div>
-        </nav>
+
         <br><br><br>
         <div class="container">
           @yield('content')
