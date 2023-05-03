@@ -66,21 +66,26 @@
 <div class="sidebar">
   <ul>
   <li>
-  <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" style="color:white;">
-                        {{ __('Dashboard') }}
-	</x-nav-link>
+    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Dashboard') }}</x-nav-link>
   </li>
+
   <li>
-<x-nav-link href="{{ route('tasklists.index') }}" :active="request()->routeIs('dashboard')" style="color:white;">
-						{{ __('Task Lists') }}
-	</x-nav-link>
+    <x-nav-link href="{{ route('tasklists.index') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Task Lists') }}</x-nav-link>
   </li>
-    <li>
-		<x-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('dashboard')" style="color:white;">
-						{{ __('Tasks') }}
-	</x-nav-link>
+
+  <li>
+    <a href="{{ url('/tasklists/create') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Create New Tasklist') }}</a>
+  </li>
+
+  <li>
+		<x-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Tasks') }}</x-nav-link>
 	</li>
-    <li><a href="#">Menu Item 4</a></li>
+
+  <li>
+    <a href="{{ url('/tasks/create') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Create New Task') }}</a>
+  </li>
+
+  <li><a href="#">Menu Item 4</a></li>
   </ul>
 </div>
 <script>
