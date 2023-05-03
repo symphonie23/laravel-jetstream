@@ -4,10 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Migration to create the 'personal_access_tokens' table for storing personal access tokens.
+ */
 return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * Creates the 'personal_access_tokens' table with columns for the token ID, the type and ID of the associated
+     * model, a name for the token, a unique token value, the abilities granted by the token, the last time the token
+     * was used, and the expiration time of the token.
      */
     public function up(): void
     {
@@ -25,6 +32,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * Drops the 'personal_access_tokens' table if it exists.
      */
     public function down(): void
     {

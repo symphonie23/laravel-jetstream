@@ -40,13 +40,16 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
             font-family: 'Poppins', sans-serif;
             overflow:hidden;
         }
+
         .table{
             width: 100%;
         }
+
         .table_header{
             display:flex;
             justify-content: space-between;
@@ -56,20 +59,24 @@
             border-radius: 5px;
             background-color: rgb(240, 240, 240);
         }
+
         .table_header p{
             color : #000000;
         }
+
         button {
             outline: none;
             border: none;
             border-radius: 6px;
             cursor: pointer;
         }
+
         .add_new{
             padding: 10px 20px;
             color: #FFFFFF;
             background-color: green;
         }
+
         input {
             padding: 10px 20px;
             margin: 0;
@@ -78,19 +85,23 @@
             border-radius: 6px;
             color: green;
         }
+
         ::placeholder{
             color:darkgreen;
         }
+
         .table_section{
             height: 460px;
             overflow: auto;
         }
+
         table{
             width: 100%;
             table-layout: fixed;
             min-width: 1000px;
             border-collapse: collapse;
         }
+
         thead, th{
             position: sticky;
             top: 0;
@@ -98,46 +109,57 @@
             color: black;
             font-size: 15px;
         }
+
         th,td{
             border-bottom: 1px solid #DDDDDD;
             padding:10px 20px;
             word-break: break-all;
         }
+
         tr:hover td{
                 color: #2AAA8A;
                 background-color: #F6F9FC;
         }
+
         ::-webkit-scrollbar{
             height: 5px;
             width: 5px;
         }
+
         ::-webkit-scrollbar-track{
             box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         }
+
         ::-webkit-scrollbar-thumb {
             box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         }
+
         .container1 {
         display: flex;
         justify-content: center;
         }
+
         .page_404{ padding:40px 0;  font-family: 'Arvo', serif;
         }
+
         .page_404  img{ width:100%;}
         .four_zero_four_bg{
         }
+
         .four_zero_four_bg h1{
         font-size:80px;
         }
+
         .four_zero_four_bg h3{
         font-size:80px;
         }
+
         .link_404{
         color: #fff!important;
-            padding: 10px 20px;
-            background: #39AC31;
-            margin: 20px 0;
-            display: inline-block;}
+        padding: 10px 20px;
+        background: #39AC31;
+        margin: 20px 0;
+        display: inline-block;}
         .contant_box_404{ margin-top:-50px;}
 
         .dropdown {
@@ -167,8 +189,6 @@
         .dropdown .btn {
         border: none;
         }
-
- 
         
         .search-container {
             align-items: center;
