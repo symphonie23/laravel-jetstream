@@ -1,5 +1,8 @@
+@include('layouts.side-bar')
 <x-app-layout>
 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
+<div class="container">
+<div class="table-container">
 <div class="col-md-12">
     <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
             <div class="table_header">
@@ -25,16 +28,22 @@
                     <thead>
                         <tr class="text-center">
                             <th class="col-sm-1"><center>ID</th>
-                                <th class="col-sm-5"><center>Task List Name</th>
-                                <th class="col-sm-3"><center>Status</th>
-                                <th class="col-sm-"><center>Manage</th>
+                                <th class="col-sm-2"><center>Task List Name</th>
+                                <th class="col-sm-3"><center>Duration</th>
+                                <th class="col-sm-2"><center>Status</th>
+                                <th class="col-sm-2"><center>Manage</th>
                             </tr>
                     </thead>
                     <tbody>
-                        @foreach($tasklists as $tasklist)
+                    @foreach($tasklists as $tasklist)
                             <tr>
                                 <td class="align-middle"><center>{{ $tasklist->id }}</td>
                                     <td class= "align-middle"><center>{{ $tasklist->name }}</td>
+                                    <td class="text-center align-middle">
+                                @if ($tasklist->deadline_at)
+                                    {{ \Carbon\Carbon::parse($tasklist->deadline_at)->format('m-d-Y H:i:s') }}
+                                @endif
+                                </td>
                                     <td class="text-center align-middle">
                                         <span class="badge rounded-pill 
                                             @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])
@@ -51,12 +60,7 @@
                                         </span>
                                         </td>
                                     </td>
-                                    <td class="text-center">
-                             <div class="dropdown">
-                             <a class="btn btn-primary btn-o dropdown-toggle" href="#" role="button" id="cogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-cog"></i>
-                            </a>
-                                <div class="dropdown-content">
+                            <td class="text-center">
                                 <a href="{{ url('/tasklists/' . $tasklist->id) }}" title="View Task"><button class="btn btn-outline-info btn-sm m-1"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                 <a href="{{ url('/tasklists/' . $tasklist->id . '/edit') }}" title="Edit Task"><button class="btn btn-outline-primary btn-sm m-1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                 <form method="POST" action="{{ url('/tasklists/' . $tasklist->id) }}" accept-charset="UTF-8" style="display:inline">
@@ -82,4 +86,3 @@
         </div>
     </div>
 </x-app-layout>
-

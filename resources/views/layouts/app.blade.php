@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <!-- CSS only -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
-    <!-- CKEditor JS -->
+        <title>Task Application</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+        <!-- CSS only -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+        <!-- CKEditor JS -->
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -40,13 +40,16 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
         body {
             font-family: 'Poppins', sans-serif;
             overflow:hidden;
         }
+
         .table{
             width: 100%;
         }
+
         .table_header{
             display:flex;
             justify-content: space-between;
@@ -56,20 +59,24 @@
             border-radius: 5px;
             background-color: rgb(240, 240, 240);
         }
+
         .table_header p{
             color : #000000;
         }
+
         button {
             outline: none;
             border: none;
             border-radius: 6px;
             cursor: pointer;
         }
+
         .add_new{
             padding: 10px 20px;
             color: #FFFFFF;
             background-color: green;
         }
+
         input {
             padding: 10px 20px;
             margin: 0;
@@ -78,19 +85,23 @@
             border-radius: 6px;
             color: green;
         }
+
         ::placeholder{
             color:darkgreen;
         }
+
         .table_section{
             height: 460px;
             overflow: auto;
         }
+
         table{
             width: 100%;
             table-layout: fixed;
             min-width: 1000px;
             border-collapse: collapse;
         }
+
         thead, th{
             position: sticky;
             top: 0;
@@ -98,55 +109,58 @@
             color: black;
             font-size: 15px;
         }
+
         th,td{
             border-bottom: 1px solid #DDDDDD;
             padding:10px 20px;
             word-break: break-all;
         }
+
         tr:hover td{
                 color: #2AAA8A;
                 background-color: #F6F9FC;
         }
+
         ::-webkit-scrollbar{
             height: 5px;
             width: 5px;
         }
+
         ::-webkit-scrollbar-track{
             box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         }
+
         ::-webkit-scrollbar-thumb {
             box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
         }
+
         .container1 {
         display: flex;
         justify-content: center;
         }
+
         .page_404{ padding:40px 0;  font-family: 'Arvo', serif;
         }
+
         .page_404  img{ width:100%;}
         .four_zero_four_bg{
         }
+
         .four_zero_four_bg h1{
         font-size:80px;
         }
+
         .four_zero_four_bg h3{
         font-size:80px;
         }
+
         .link_404{
         color: #fff!important;
-            padding: 10px 20px;
-            background: #39AC31;
-            margin: 20px 0;
-            display: inline-block;}
+        padding: 10px 20px;
+        background: #39AC31;
+        margin: 20px 0;
+        display: inline-block;}
         .contant_box_404{ margin-top:-50px;}
-
-        .dropbtn {
-        background-color: #04AA6D;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        }
 
         .dropdown {
         position: relative;
@@ -158,45 +172,24 @@
         position: absolute;
         background-color: #f1f1f1;
         min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
         }
 
         .dropdown-content a {
         color: black;
-        padding: 12px 16px;
+        padding: 6px 16px;
         text-decoration: none;
         display: block;
         }
 
-        .dropdown-content a:hover {background-color: #ddd;}
-
-        .dropdown:hover .dropdown-content {display: block;}
-
-        .dropdown:hover .dropbtn {background-color: #3e8e41;}
+        .dropdown:hover .dropdown-content {display: block;
+        }
 
         /* Style the dropdown button */
         .dropdown .btn {
         border: none;
         }
-
-        /* Style the dropdown menu */
-        .dropdown-menu {
-        min-width: unset;
-        padding: 0;
-        }
-
-        /* Style the dropdown items */
-        .dropdown-item {
-        padding: 5px 10px;
-        color: #333;
-        }
-
-        /* Style the dropdown items on hover */
-        .dropdown-item:hover {
-        background-color: #f8f9fa;
-        color: #333;
-        }
+        
         .search-container {
             align-items: center;
             margin-bottom: 0.5rem;
@@ -205,7 +198,6 @@
             margin-left: auto;
             justify-content: flex-end;
         }
-
 
         .search-container .input-group {
             display: flex;
@@ -241,7 +233,7 @@
             }
 
             </script>
-</head>
+    </head>
             <body class="font-sans antialiased">
                 <x-banner />
 
