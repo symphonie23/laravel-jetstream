@@ -61,7 +61,7 @@
                                 <textarea name="desc" id="desc" class="form-control" rows="5"></textarea>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="text-center" style="margin-top:30px;margin-bottom:10px">
                                 <button type="submit" class="btn btn-success btn-md float-end" style="background-color: #2AAA8A; color:white;">Save</button>
                                 <a href="{{ url()->previous() }}" class="btn btn-secondary btn-md float-end me-2">Cancel</a>

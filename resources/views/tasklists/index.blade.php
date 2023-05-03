@@ -25,16 +25,22 @@
                     <thead>
                         <tr class="text-center">
                             <th class="col-sm-1"><center>ID</th>
-                                <th class="col-sm-5"><center>Task List Name</th>
-                                <th class="col-sm-3"><center>Status</th>
-                                <th class="col-sm-"><center>Manage</th>
+                                <th class="col-sm-2"><center>Task List Name</th>
+                                <th class="col-sm-3"><center>Duration</th>
+                                <th class="col-sm-2"><center>Status</th>
+                                <th class="col-sm-2"><center>Manage</th>
                             </tr>
                     </thead>
                     <tbody>
-                        @foreach($tasklists as $tasklist)
+                    @foreach($tasklists as $tasklist)
                             <tr>
                                 <td class="align-middle"><center>{{ $tasklist->id }}</td>
                                     <td class= "align-middle"><center>{{ $tasklist->name }}</td>
+                                    <td class="text-center align-middle">
+                                @if ($tasklist->deadline_at)
+                                    {{ \Carbon\Carbon::parse($tasklist->deadline_at)->format('m-d-Y H:i:s') }}
+                                @endif
+                                </td>
                                     <td class="text-center align-middle">
                                         <span class="badge rounded-pill 
                                             @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])

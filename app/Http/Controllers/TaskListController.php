@@ -47,9 +47,19 @@ class TaskListController extends Controller
     public function show($id)
     {
         $tasklist = TaskList::findOrFail($id);
-        $tasks = $tasklist->tasks->where('deleted_by', NULL);
+    
+        $tasks = $tasklist->tasks
+                        ->where('deleted_by', NULL)
+                        ->orderBy('deadline_at', 'asc')
+                        ->get()
+                        ->map(function ($task) {
+                            $task->formatted_deadline = $task->deadline_at ? Carbon::parse($task->deadline_at)->format('m-d-Y') : '';
+                            return $task;
+                        });
+    
         return view('tasklists.show', ['tasklist' => $tasklist, 'tasks' => $tasks]);
     }
+    
     
     public function edit(TaskList $tasklist)
     {

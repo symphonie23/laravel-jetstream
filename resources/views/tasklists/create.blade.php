@@ -24,10 +24,10 @@
           <div class="col-md-3">
             <div class="form-group">
               <label for="name"><b>End Date</b></label>
-              <input type="date" name="end_date" id="end_date" class="form-control " value="">
-            </div>
+              <input type="datetime-local" name="deadline_at" id="deadline_at" class="form-control" value="{{ ('deadline_at') }}" />
+                            </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6">
             <div class="form-group">
               <label for="status"><b>Status</b></label>
               <select name="status" id="status" class="form-control select2" style="width:100%">
