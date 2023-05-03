@@ -16,7 +16,11 @@ class TaskList extends Model
         'name',
         'created_by',
         'deleted_at',
-        'deleted_by'
+        'deleted_by',
+        'deadline_at'
+    ];
+    protected $casts = [
+        'deadline_at' => 'datetime',
     ];
     
 
