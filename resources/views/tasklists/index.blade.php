@@ -51,12 +51,7 @@
                                         </span>
                                         </td>
                                     </td>
-                                    <td class="text-center">
-                             <div class="dropdown">
-                             <a class="btn btn-primary btn-o dropdown-toggle" href="#" role="button" id="cogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-cog"></i>
-                            </a>
-                                <div class="dropdown-content">
+                            <td class="text-center">
                                 <a href="{{ url('/tasklists/' . $tasklist->id) }}" title="View Task"><button class="btn btn-outline-info btn-sm m-1"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                 <a href="{{ url('/tasklists/' . $tasklist->id . '/edit') }}" title="Edit Task"><button class="btn btn-outline-primary btn-sm m-1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                 <form method="POST" action="{{ url('/tasklists/' . $tasklist->id) }}" accept-charset="UTF-8" style="display:inline">
