@@ -1,34 +1,72 @@
-@extends('tasks.layout')
+<x-app-layout>
+  <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
+    <div class="col-md-12">
+      <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+        <div class="card-header">
+          <br><center><h1>View Task</h1><br>
+        </div><br>
 
-@section('content')
+        <form action="{{ url('tasks') }}" method="post">
+          {!! csrf_field() !!}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name"><b>Task Name</b></label>
+                <input type="text" name="name" id="name" class="form-control">
+              </div>
+            </div>
 
-<div class="row d-flex justify-content-center">
-  <div class="col-md-12">
-    <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
-      <div class="card-header">
-        <center><h2>Task</h2>
-      </div>
-      <div class="card-body">
-        @if ($tasks)
-        <label>Task Name</label></br>
-        <input type="text" name="name" id="name" class="form-control" value="{{ $tasks->name }}" disabled></br>
-        @endif
+          <div class="col-md-6">
+              <div class="form-group">
+                <label for="project_id"><b>Task List</b></label>
+                <select name="task_list_id" id="task_list_id" class="form-control">
+                </select>
+              </div>
+            </div>
+          </div><br>
 
-        @if ($tasks)
-        <label>Task Description</label></br>
-        <input type="text" name="desc" id="desc" class="form-control" value="{{ $tasks->desc }}" disabled></br>
-        @endif
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="name"><b>Start Date</b></label>
+                <input type="datetime-local" name="start_date" id="start_date" class="form-control " value="">
+              </div>
+            </div>
 
-        @if ($tasks)
-        <label>Task Description</label></br>
-        <input type="datetime-local" name="deadline_at" id="deadline_at" class="form-control" value="{{ $tasks->deadline_at }}" disabled></br>
-        @endif
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="name"><b>End Date</b></label>
+                <input type="datetime-local" name="deadline_at" id="deadline_at" class="form-control" value="{{ ('deadline_at') }}" />
+              </div>
+            </div>
 
-        <a href="{{ url()->previous() }}" class="btn btn-secondary btn-md float-end me-2">
-            Close
-        </a>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="status"><b>Status</b></label>
+                <select name="status" id="status" class="form-control select2" style="width:100%">
+                  <option value="">..........</option>
+                  <option value="0" >Pending</option>
+                  <option value="1" >Completed</option>
+                </select>
+              </div>
+            </div>
+          </div><br>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="name"><b>Description</b></label>
+                <textarea name="desc" id="desc" class="form-control" rows="5"></textarea>
+              </div>
+            </div>
+          </div><br>
+
+          <!--save button-->
+          <input type="submit" value="Save" class="btn btn-success btn-md float-end" style="background-color: #2AAA8A; color:white;">
+          <!--button to go back to the tasklists page-->
+          <a href="{{ url('/tasks') }}" class="btn btn-secondary btn-md float-end  mx-2" title="Back to Task Lists">Cancel</a><br><br>
+        </form>
       </div>
     </div>
   </div>
-</div>
-@stop
+</x-app-layout>

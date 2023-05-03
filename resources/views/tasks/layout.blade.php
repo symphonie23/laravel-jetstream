@@ -233,7 +233,6 @@ font-size:80px;
         alert("You must log in to proceed");
         return false; // Prevent the link from being followed
     }
-
     </script>
   </head>
   <body>

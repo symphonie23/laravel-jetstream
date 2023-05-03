@@ -14,13 +14,12 @@ use Illuminate\View\View;
  
 class TaskController extends Controller
 {
- 
     public function index(): View
     {
-        $tasks = Task::all();
-        return view('tasks.index')->with('tasks', $tasks);
+        $tasks = Task::paginate(8);
+        return view('tasks.index', compact('tasks'));
     }    
-    
+
     public function create()
     {
         $task_lists = TaskList::whereNull('deleted_at')
@@ -29,7 +28,6 @@ class TaskController extends Controller
         return view('tasks.create', compact('task_lists'));
     }
     
-  
     public function store(Request $request): RedirectResponse
     {
         $input = $request->all();
@@ -55,13 +53,14 @@ class TaskController extends Controller
                     });
         return view('tasks.show')->with('tasks', $task);
     }
- 
+
     public function edit(string $id): View
     {
         $task = Task::find($id);
         $tasklists = TaskList::all();
         return view('tasks.edit', ['task_lists' => $tasklists])->with('tasks', $task);
     }
+    
     public function update(Request $request, string $id): RedirectResponse
     {
         $task = Task::find($id);
@@ -83,9 +82,9 @@ class TaskController extends Controller
         }
         
         $tasklist_id = $task->task_list_id;
-        return redirect()->route('tasklists.show', ['tasklist' => $tasklist_id])->with('flash_message', 'Task updated!');
-        }
-    
+    return redirect()->route('tasklists.show', ['tasklist' => $tasklist_id])->with('flash_message', 'Task updated!');
+    }
+
     public function destroy(Request $request, $id)
     {
         $task = Task::findOrFail($id);
@@ -95,6 +94,6 @@ class TaskController extends Controller
             'deleted_at' => $request->deleted_at
         ]);
 
-        return redirect()->route('tasklists.show', ['tasklist' => $tasklist_id])->with('flash_message', 'Task Deleted!');
-        }  
+    return redirect()->route('tasklists.show', ['tasklist' => $tasklist_id])->with('flash_message', 'Task Deleted!');
+    }  
 }
