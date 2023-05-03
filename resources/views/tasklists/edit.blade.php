@@ -6,6 +6,7 @@
         <center><h2>Edit Task List</h2>
       </div>
       <div class="card-body">
+      <div class="col-md-12">
         <form action="{{ url('tasklists/' .$tasklist->id) }}" method="post">
           {!! csrf_field() !!}
           @method("PATCH")

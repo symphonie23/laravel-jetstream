@@ -26,27 +26,6 @@
               <label for="name"><b>End Date</b></label>
               <input type="datetime-local" name="deadline_at" id="deadline_at" class="form-control" value="{{ ('deadline_at') }}" />
                             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="status"><b>Status</b></label>
-              <select name="status" id="status" class="form-control select2" style="width:100%">
-                <option value="">..........</option>
-                <option value="0" >Pending</option>
-                <option value="1" >Preparing</option>
-                <option value="2" >Processing</option>
-                <option value="3" >Completed</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="name"><b>Description</b></label>
-              <textarea name="desc" id="desc" class="form-control desc" rows="5"></textarea>
-            </div>
-          </div>
           <div class="col-md-12">
             <div class="text-center" style="margin-top:30px;margin-bottom:10px">
               <input type="submit" value="Save" class="btn btn-success btn-md float-end" style="background-color: #2AAA8A; color:white;">
