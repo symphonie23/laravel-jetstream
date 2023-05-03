@@ -15,15 +15,8 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('tasklists.index') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Task Lists') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Tasks') }}
-                    </x-nav-link>
                 </div>
             </div>
-
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())

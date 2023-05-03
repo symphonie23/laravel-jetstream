@@ -1,7 +1,10 @@
+@include('layouts.side-bar')
 <x-app-layout>
 <div class="row d-flex justify-content-center">
   <div class="col-md-12">
     <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+    <div class="container">
+    <div class="table-container">
         <div class="table_header">
             <h2>Tasks</h2>
             <div>

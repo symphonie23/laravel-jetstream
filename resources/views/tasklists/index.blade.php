@@ -1,5 +1,8 @@
+@include('layouts.side-bar')
 <x-app-layout>
 <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
+<div class="container">
+<div class="table-container">
 <div class="col-md-12">
     <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
             <div class="table_header">
@@ -83,4 +86,3 @@
         </div>
     </div>
 </x-app-layout>
-

@@ -233,7 +233,7 @@
             }
 
             </script>
-</head>
+    </head>
             <body class="font-sans antialiased">
                 <x-banner />
 

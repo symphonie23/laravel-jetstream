@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class TaskListController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $query = $request->query('search');
@@ -28,6 +34,11 @@ class TaskListController extends Controller
         return view('tasklists.index', compact('tasklists', 'counts'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         $tasklists = TaskList::all();
@@ -35,6 +46,12 @@ class TaskListController extends Controller
         return view('tasklists.create', compact('tasklists'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
        $taskList = new TaskList();
@@ -44,6 +61,12 @@ class TaskListController extends Controller
         return redirect()->route('tasklists.index');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\View\View
+     */
     public function show($id)
     {
         $tasklist = TaskList::findOrFail($id);
@@ -51,11 +74,24 @@ class TaskListController extends Controller
         return view('tasklists.show', ['tasklist' => $tasklist, 'tasks' => $tasks]);
     }
     
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\TaskList  $tasklist
+     * @return \Illuminate\View\View
+     */
     public function edit(TaskList $tasklist)
     {
         return view('tasklists.edit', compact('tasklist'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\TaskList  $tasklist
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, TaskList $tasklist)
     {
         $tasklist->update([
@@ -65,6 +101,13 @@ class TaskListController extends Controller
         return redirect()->route('tasklists.index');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(Request $request, $id)
     {
         $tasklist = TaskList::findOrFail($id);
