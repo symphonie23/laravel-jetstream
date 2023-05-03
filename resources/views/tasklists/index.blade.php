@@ -28,11 +28,11 @@
                     <thead>
                         <tr class="text-center">
                             <th class="col-sm-1"><center>ID</th>
-                                <th class="col-sm-2"><center>Task List Name</th>
-                                <th class="col-sm-3"><center>Duration</th>
-                                <th class="col-sm-2"><center>Status</th>
-                                <th class="col-sm-2"><center>Manage</th>
-                            </tr>
+                            <th class="col-sm-2"><center>Task List Name</th>
+                            <th class="col-sm-2"><center>Duration</th>
+                            <th class="col-sm-2"><center>Status</th>
+                            <th class="col-sm-3"><center>Manage</th>
+                        </tr>
                     </thead>
                     <tbody>
                     @foreach($tasklists as $tasklist)
