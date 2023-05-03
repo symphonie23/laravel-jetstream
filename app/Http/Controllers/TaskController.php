@@ -22,15 +22,15 @@ class TaskController extends Controller
      */
     public function index(): View
     {
-        $tasks = Task::all();
-        return view('tasks.index')->with('tasks', $tasks);
-    }    
-    
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\View\View
      */
+        $tasks = Task::paginate(5);
+        return view('tasks.index', compact('tasks'));
+    }
+
     public function create()
     {
         $task_lists = TaskList::whereNull('deleted_at')

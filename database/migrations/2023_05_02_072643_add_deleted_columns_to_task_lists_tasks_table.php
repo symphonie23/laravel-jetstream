@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      *
+     * Add soft delete columns to task_lists and tasks tables
+     *
      * @return void
      */
     public function up()
@@ -30,6 +32,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * Remove soft delete columns from task_lists and tasks tables
      *
      * @return void
      */

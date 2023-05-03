@@ -1,12 +1,12 @@
-@extends('tasks.layout')
-@section('content')
-<div class="row d-flex justify-content-center">
+<x-app-layout>
+<div class="p-6 lg:p-8 bg-white border-b border-gray-200">
   <div class="col-md-12">
   <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
       <div class="card-header">
         <center><h2>Edit Task List</h2>
       </div>
       <div class="card-body">
+      <div class="col-md-12">
         <form action="{{ url('tasklists/' .$tasklist->id) }}" method="post">
           {!! csrf_field() !!}
           @method("PATCH")
@@ -20,4 +20,4 @@
     </div>
   </div>
 </div>
-@stop
+</x-app-layout>

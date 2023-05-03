@@ -8,6 +8,11 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * Add a foreign key column named "created_by" to both the task_lists and tasks tables
+     * to reference the "id" column in the "users" table with the "set null" on delete action.
+     *
+     * @return void
      */
     public function up(): void
     {
@@ -24,6 +29,10 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * Remove the "created_by" foreign key column from both the task_lists and tasks tables.
+     *
+     * @return void
      */
     public function down(): void
     {

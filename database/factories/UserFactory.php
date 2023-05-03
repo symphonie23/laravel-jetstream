@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
 
+/**
+ * The UserFactory class is responsible for generating fake user data for testing purposes.
+ */
 class UserFactory extends Factory
 {
     /**
@@ -20,7 +23,7 @@ class UserFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array<string, mixed> An array of attributes representing the default state of the user model.
      */
     public function definition(): array
     {
@@ -39,6 +42,8 @@ class UserFactory extends Factory
 
     /**
      * Indicate that the model's email address should be unverified.
+     *
+     * @return static The UserFactory instance with the 'email_verified_at' attribute set to null.
      */
     public function unverified(): static
     {
@@ -51,13 +56,18 @@ class UserFactory extends Factory
 
     /**
      * Indicate that the user should have a personal team.
+     *
+     * @param callable|null $callback An optional callback function to customize the team attributes.
+     * @return static The UserFactory instance with a personal team.
      */
     public function withPersonalTeam(callable $callback = null): static
     {
+        // Check if the Jetstream team features are enabled
         if (! Features::hasTeamFeatures()) {
             return $this->state([]);
         }
 
+        // Define a personal team with the user as the owner
         return $this->has(
             Team::factory()
                 ->state(fn (array $attributes, User $user) => [
