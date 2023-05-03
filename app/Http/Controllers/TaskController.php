@@ -15,12 +15,22 @@ use Illuminate\View\View;
 class TaskController extends Controller
 {
  
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index(): View
     {
         $tasks = Task::all();
         return view('tasks.index')->with('tasks', $tasks);
     }    
     
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         $task_lists = TaskList::whereNull('deleted_at')
@@ -29,7 +39,12 @@ class TaskController extends Controller
         return view('tasks.create', compact('task_lists'));
     }
     
-  
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request): RedirectResponse
     {
         $input = $request->all();
@@ -38,6 +53,12 @@ class TaskController extends Controller
         return redirect()->route('tasklists.show', ['tasklist' => $taskListId])->with('flash_message', 'Task Added!');
     }   
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  string $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function show(string $id): RedirectResponse|View
     {
         $task = Task::find($id);
@@ -56,12 +77,26 @@ class TaskController extends Controller
         return view('tasks.show')->with('tasks', $task);
     }
  
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  string $id
+     * @return \Illuminate\View\View
+     */
     public function edit(string $id): View
     {
         $task = Task::find($id);
         $tasklists = TaskList::all();
         return view('tasks.edit', ['task_lists' => $tasklists])->with('tasks', $task);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, string $id): RedirectResponse
     {
         $task = Task::find($id);
@@ -84,17 +119,31 @@ class TaskController extends Controller
         
         $tasklist_id = $task->task_list_id;
         return redirect()->route('tasklists.show', ['tasklist' => $tasklist_id])->with('flash_message', 'Task updated!');
-        }
+    }
     
-    public function destroy(Request $request, $id)
+    /**
+     * Deletes a task.
+     *
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse
+     */
+    public function destroy(Request $request, $id): RedirectResponse
     {
+        // Find the task with the given id
         $task = Task::findOrFail($id);
+
+        // Get the task list id to redirect back to the task list after deletion
         $tasklist_id = $task->tasklist->id;
+
+        // Update the task with the deleted_by and deleted_at fields
         $task->update([
             'deleted_by' => $request->deleted_by,
             'deleted_at' => $request->deleted_at
         ]);
 
+        // Redirect back to the task list with a flash message indicating the task has been deleted
         return redirect()->route('tasklists.show', ['tasklist' => $tasklist_id])->with('flash_message', 'Task Deleted!');
-        }  
+    }  
+
 }
