@@ -13,8 +13,7 @@ use Carbon\Carbon;
 use Illuminate\View\View;
  
 class TaskController extends Controller
-{
- 
+{ 
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +26,7 @@ class TaskController extends Controller
      *
      * @return \Illuminate\View\View
      */
-        $tasks = Task::paginate(5);
+        $tasks = Task::paginate(8);
         return view('tasks.index', compact('tasks'));
     }
 
@@ -145,5 +144,4 @@ class TaskController extends Controller
         // Redirect back to the task list with a flash message indicating the task has been deleted
         return redirect()->route('tasklists.show', ['tasklist' => $tasklist_id])->with('flash_message', 'Task Deleted!');
     }  
-
 }
