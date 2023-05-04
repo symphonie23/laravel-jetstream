@@ -56,17 +56,6 @@
                   <input type="datetime-local" name="deadline_at" id="deadline_at" class="form-control" value="{{ ('deadline_at') }}" />
                 </div>
               </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="status"><b>Status</b></label>
-                  <select name="status" id="status" class="form-control select2" style="width:100%">
-                    <option value="">..........</option>
-                    <option value="0" >Pending</option>
-                    <option value="1" >Completed</option>
-                  </select>
-                </div>
-              </div>
             </div><br>
 
             <div class="row">
