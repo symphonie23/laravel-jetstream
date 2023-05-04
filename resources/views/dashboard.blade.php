@@ -6,45 +6,42 @@
                 <br><h1><b>Dashboard</b></h1><br>
             </div>
 
-            <div class= "p-1">
+            <div class= "p-1 d-flex justify-content-around">
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>50</h3>
                         <p>TASK LISTS</p>
-                    </div>
-                    <div class="icon">
                         <i class="fa fa-flag"></i>
                     </div>
+                    
                     <a href="#" class="small-box-footer">
                         SHOW INFO <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
-                
+
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>100</h3>
                         <p>PENDING TASKS</p>
-                    </div>
-                    <div class="icon">
                         <i class="fa fa-info"></i>
                     </div>
                     <a href="#" class="small-box-footer">
                         SHOW INFO <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
+
                 <div class="small-box bg-info">
                     <div class="inner">
                         <h3>150</h3>
                         <p>COMPLETED TASKS</p>
-                    </div>
-                    <div class="icon">
                         <i class="fa fa-check-circle"></i>
                     </div>
                     <a href="#" class="small-box-footer">
                         SHOW INFO <i class="fas fa-arrow-circle-right"></i>
                     </a>
-                </div>
-</div>
+                </div>  
+            </div>
+
 <div class="table_header">
                 <h1><b>Pending Tasks</b></h1>
                 <form action="{{ url('/tasklists') }}" method="GET">
