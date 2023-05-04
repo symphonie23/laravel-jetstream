@@ -17,19 +17,21 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\View\View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
+        $query = $request->query('search');
+        $tasks = Task::where('name', 'like', '%' . $query . '%')->paginate(8);
+        return view('tasks.index', compact('tasks'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\View\View
      */
-        $tasks = Task::paginate(8);
-        return view('tasks.index', compact('tasks'));
-    }
-
     public function create()
     {
         $task_lists = TaskList::whereNull('deleted_at')
@@ -37,7 +39,7 @@ class TaskController extends Controller
             ->get();
         return view('tasks.create', compact('task_lists'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *

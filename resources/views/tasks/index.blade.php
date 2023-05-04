@@ -1,12 +1,21 @@
+<?php
+/**
+ * Display a listing of the resource.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+ */
+?>
 <x-app-layout>
 @include('layouts.side-bar')
-    <div class="container-fluid col-md-10 position-absolute end-0">
+<div class="container-fluid col-md-12 position-absolute end-0">
+    <div class="table-container">
         <div class="card p-3 bg-body-tertiary">
             <div class="table_header">
                 <h1><b>Tasks</b></h1>
-                <form action="{{ url('/tasklists') }}" method="GET">
+                <form action="{{ url('/tasks') }}" method="GET">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" name="search">
+                        <input type="text" class="form-control" placeholder="Search" name="search" value="{{ request('search') }}">
                         <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
                     </div>
                 </form>
