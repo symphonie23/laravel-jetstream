@@ -215,7 +215,60 @@
             border: none;
             background: transparent;
         }
-        </style>
+.small-box {
+  width: 250px;
+  height: 150px;
+  display: inline-block;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.small-box .inner {
+  padding: 10px;
+}
+
+.small-box h3 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.small-box p {
+  font-size: 18px;
+  margin: 0;
+}
+
+.small-box .icon {
+  display: inline-block;
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #fff;
+  background-color: #17a2b8;
+  border-radius: 5px;
+}
+
+.small-box .small-box-footer {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 0px 0px 5px 5px;
+  text-decoration: none;
+}
+
+.small-box .small-box-footer:hover {
+  background-color: #0069d9;
+}
+
+
+
+    </style>
             <!-- JavaScript Bundle with Popper -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
             <!-- Scripts -->

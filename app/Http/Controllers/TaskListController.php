@@ -108,15 +108,14 @@ class TaskListController extends Controller
      */
     public function update(Request $request, TaskList $tasklist)
     {
-        $tasklist->update([
-            'name' => $request->name,
-            'created_at' => $tasklist->created_at, // use the existing created_at value
-            'deadline_at' => $request->deadline_at,
-        ]);
-
+        $tasklist->name = $request->name;
+        $tasklist->deadline_at = $request->deadline_at;
+        $tasklist->created_at = $request->created_at;
+        $tasklist->save();
+    
         return redirect()->route('tasklists.index');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
