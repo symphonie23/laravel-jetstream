@@ -14,25 +14,28 @@ class TaskListController extends Controller
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
-    {
-        $query = $request->query('search');
-        $tasklists = TaskList::where('created_by', auth()->user()->id)
-                        ->where('deleted_by', NULL)
-                        ->when($query, function ($q) use ($query) {
-                            $q->where('name', 'like', '%' . $query . '%');
-                        })
-                        ->paginate(5);
-        $counts = [];
-        foreach ($tasklists as $tasklist) {
-            $totalTasks = $tasklist->taskCount();
-            $completedTasks = $tasklist->tasksCompleted();
-            $counts[$tasklist->id] = [
-                'total' => $totalTasks,
-                'completed' => $completedTasks,
-            ];
-        }
-        return view('tasklists.index', compact('tasklists', 'counts'));
+{
+    $query = $request->query('search');
+    $tasklists = TaskList::where('created_by', auth()->user()->id)
+                    ->where('deleted_by', NULL)
+                    ->when($query, function ($q) use ($query) {
+                        $q->where('name', 'like', '%' . $query . '%');
+                    })
+                    ->paginate(5);
+    $counts = [];
+    foreach ($tasklists as $tasklist) {
+        $totalTasks = $tasklist->taskCount();
+        $completedTasks = $tasklist->tasksCompleted();
+        $counts[$tasklist->id] = [
+            'total' => $totalTasks,
+            'completed' => $completedTasks,
+        ];
+        $tasklist->formatted_deadline = $tasklist->deadline_at ? \Carbon\Carbon::parse($tasklist->deadline_at)->format('m-d-Y H:i:s') : null;
+        $tasklist->formatted_created_at = $tasklist->created_at ? \Carbon\Carbon::parse($tasklist->created_at)->format('m-d-Y H:i:s') : null;
     }
+    return view('tasklists.index', compact('tasklists', 'counts'));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -54,9 +57,11 @@ class TaskListController extends Controller
      */
     public function store(Request $request)
     {
-       $taskList = new TaskList();
+        $taskList = new TaskList();
         $taskList->name = $request->input('name');
         $taskList->created_by = $request->input('created_by');
+        $taskList->created_at = $request->input('created_at');
+        $taskList->deadline_at = $request->input('deadline_at');
         $taskList->save();
         return redirect()->route('tasklists.index');
     }
@@ -68,12 +73,19 @@ class TaskListController extends Controller
      * @return \Illuminate\View\View
      */
     public function show($id)
-    {
-        $tasklist = TaskList::findOrFail($id);
-        $tasks = $tasklist->tasks->where('deleted_by', NULL);
-        return view('tasklists.show', ['tasklist' => $tasklist, 'tasks' => $tasks]);
+{
+    $tasklist = TaskList::findOrFail($id);
+    $tasks = $tasklist->tasks->where('deleted_by', NULL)->sortBy('deadline_at');
+    foreach ($tasks as $task) {
+        $task->formatted_deadline = $task->deadline_at ? \Carbon\Carbon::parse($task->deadline_at)->format('m-d-Y H:i:s') : null;
+        $task->formatted_created_at = $task->created_at ? \Carbon\Carbon::parse($task->created_at)->format('m-d-Y H:i:s') : null;
     }
-    
+    $tasklist->formatted_deadline = $tasklist->deadline_at ? \Carbon\Carbon::parse($tasklist->deadline_at)->format('m-d-Y H:i:s') : null;
+    $tasklist->formatted_created_at = $tasklist->created_at ? \Carbon\Carbon::parse($tasklist->created_at)->format('m-d-Y H:i:s') : null;
+    return view('tasklists.show', ['tasklist' => $tasklist, 'tasks' => $tasks]);
+}
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -81,9 +93,9 @@ class TaskListController extends Controller
      * @return \Illuminate\View\View
      */
     public function edit(TaskList $tasklist)
-    {
-        return view('tasklists.edit', compact('tasklist'));
-    }
+{
+    return view('tasklists.edit', compact('tasklist'));
+}
 
     /**
      * Update the specified resource in storage.
@@ -93,14 +105,15 @@ class TaskListController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, TaskList $tasklist)
-    {
-        $tasklist->update([
-            'name' => $request->name,
-        ]);
+{
+    $tasklist->update([
+        'name' => $request->name,
+        'created_at' => $tasklist->created_at, // use the existing created_at value
+        'deadline_at' => $request->deadline_at,
+    ]);
 
-        return redirect()->route('tasklists.index');
-    }
-
+    return redirect()->route('tasklists.index');
+}
     /**
      * Remove the specified resource from storage.
      *
