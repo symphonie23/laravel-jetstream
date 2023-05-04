@@ -1,6 +1,7 @@
 <x-app-layout>
 @include('layouts.side-bar')
-    <div class="container-fluid col-md-10 position-absolute end-0">
+    <div class="container-fluid col-md-12 position-absolute end-0">
+    <div class="table-container">
         <div class="card p-3 bg-body-tertiary">
             <div class="table_header">
                 <h1><b>Task Lists</b></h1>
@@ -77,4 +78,5 @@
             </div>
         </div>
     </div>
+</div>
 </x-app-layout>
