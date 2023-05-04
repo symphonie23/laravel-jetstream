@@ -23,7 +23,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="name"><b>Start Date</b></label>
-                  <input type="datetime-local" name="start_date" id="start_date" class="form-control " value="">
+                  <input type="datetime-local" name="created_at" id="created_at" class="form-control " value="{ ('created_at') }}">
                 </div>
               </div>
 
