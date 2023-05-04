@@ -11,94 +11,95 @@
       display: none;
     }
     
-		.table-container {
-			margin-left: 200px;
-		}
+	.table-container {
+		margin-left: 200px;
+	}
 
-		.container {
-			display: flex;
-			justify-content: space-between;
-		}
+	.container {
+		display: flex;
+		justify-content: space-between;
+	}
 
-		.sidebar {
-			width: 200px;
-			height: 100%;
-			position: fixed;
-			top: 0;
-			left: 0;
-			background-color: #333;
-			color: #fff;
-			padding: 20px;
-			z-index: 1;
-			margin-top: 64px;
-		}
+	.sidebar {
+		width: 200px;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-color: #333;
+		color: #fff;
+		padding: 20px;
+		z-index: 1;
+		margin-top: 64px;
+		transition: all 0.1s ease;
+	}
     
     .sidebar ul {
-      list-style: none;
-      padding-top: 10px;
+      	list-style: none;
+     	padding-top: 10px;
     }
 
     .sidebar ul li {
-      padding-left: 6px;
-      padding-top: 10px;
+     	padding-left: 6px;
+     	padding-top: 10px;
     }
 
-		.sidebar ul li a {
-			color: #fff;
-			text-decoration: none;
-			display: block;
-			padding: 5px;
-			transition: background-color 0.3s ease;
-		}
+	.sidebar ul li a {
+		color: #fff;
+		text-decoration: none;
+		display: block;
+		padding: 5px;
+		transition: background-color 0.1s ease;
+	}
 
-		.sidebar ul li a:hover {
-			background-color: #444;
-		}
+	.sidebar ul li a:hover {
+		background-color: #444;
+	}
 
-		.button {
-			position: absolute;
-			top: 0;
-			right: -13px;
-			background-color: #333;
-			color: #fff;
-			padding: 10px;
-			border: none;
-			cursor: pointer;
-			z-index: 1;
-		}
+	.button {
+		position: absolute;
+		top: 0;
+		right: -13px;
+		background-color: #333;
+		color: #fff;
+		padding: 10px;
+		border: none;
+		cursor: pointer;
+		z-index: 1;
+	}
 
-		.sidebar.collapsed ul {
-			visibility: hidden;
-		}
+	.sidebar.collapsed ul {
+		visibility: hidden;
+	}
 
-		.sidebar.collapsed {
-			width: 40px;
-			overflow: hidden;
-			transition: width 0.3s ease;
-		}
+	.sidebar.collapsed {
+		width: 40px;
+		overflow: hidden;
+		transition: width 0.1s ease;
+	}
 
-		.sidebar.collapsed .button {
-			right: 0;
-			transition: right 0.3s ease;
-		}
+	.sidebar.collapsed .button {
+		right: 0;
+		transition: right 0.1s ease;
+	}
 
-		.sidebar.collapsed ul li a {
-			padding: 0;
-			opacity: 0;
-			transition: opacity 0.3s ease;
-		}
+	.sidebar.collapsed ul li a {
+		padding: 0;
+		opacity: 0;
+		transition: opacity 0.1s ease;
+	}
 
-		.sidebar.collapsed ul li a:hover {
-			background-color: transparent;
-		}
-		.sidebar.collapsed:hover {
-			width: 40px;
-		}
+	.sidebar.collapsed ul li a:hover {
+		background-color: transparent;
+	}
+	.sidebar.collapsed:hover {
+		width: 40px;
+	}
 
-		.button:hover + ul li a {
-			padding: 5px;
-			opacity: 1;
-			}
+	.button:hover + ul li a {
+		padding: 5px;
+		opacity: 1;
+	}
 
     .toggle-button {
       position: fixed;
@@ -182,17 +183,23 @@
   });
 
   function toggleSidebar() {
-    var sidebar = document.querySelector('.sidebar');
-    var tableContainer = document.querySelector('.table-container');
+  var sidebar = document.querySelector('.sidebar');
+  var tableContainer = document.querySelector('.table-container');
+  var buttonIcon = document.querySelector('.button i');
 
-    sidebar.classList.toggle('collapsed');
+  sidebar.classList.toggle('collapsed');
 
-    if (sidebar.classList.contains('collapsed')) {
-      tableContainer.style.marginLeft = '40px';
-    } else {
-      tableContainer.style.marginLeft = '200px';
-    }
+  if (sidebar.classList.contains('collapsed')) {
+    tableContainer.style.marginLeft = '40px';
+    buttonIcon.classList.remove('fa-bars');
+    buttonIcon.classList.add('fa-arrow-right');
+  } else {
+    tableContainer.style.marginLeft = '200px';
+    buttonIcon.classList.remove('fa-arrow-right');
+    buttonIcon.classList.add('fa-bars');
   }
+}
+
 </script>
 </body>
 </html>
