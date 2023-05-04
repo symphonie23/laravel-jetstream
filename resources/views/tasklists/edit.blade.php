@@ -1,7 +1,7 @@
 <x-app-layout>
-<div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-  <div class="col-md-12">
-  <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+  @include('layouts.side-bar')
+  <div class="container-fluid col-md-10 position-absolute end-0">
+    <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
       <div class="card-header">
         <center><h2>Edit Task List</h2>
       </div>
@@ -29,8 +29,9 @@
           <div class="col-md-12">
             <div class="text-center" style="margin-top:30px;margin-bottom:10px">
           <input type="submit" value="Update" class="btn float-end" style="background-color: #2AAA8A; color:white;">
-          <a href="{{ url('/tasklists') }}" class="btn btn-outline-danger float-end mx-2" title="Back to Tasks">Cancel</a>
+          <a href="{{ url('/tasklists') }}" class="btn btn-secondary float-end mx-2" title="Back to Tasks">Cancel</a>
          </form>
+        </div>
       </div>
     </div>
   </div>  

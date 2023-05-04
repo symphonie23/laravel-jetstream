@@ -1,12 +1,14 @@
 <x-app-layout>
-  <div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-    <div class="col-md-12">
-      <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
-        <div class="card-header">
-          <br><center><h1>Create Task</h1><br>
-        </div><br>
+  @include('layouts.side-bar')
+  <div class="container-fluid col-md-10 position-absolute end-0">
+    <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
+      <div class="card-header">
+        <br><center><h1>Create Task</h1><br>
+      </div><br>
 
-        <form action="{{ url('tasks') }}" method="post">
+      <div class="card">
+        <div class= "p-4">
+          <form action="{{ url('tasks') }}" method="post">
           {!! csrf_field() !!}
           <div class="row">
             <div class="col-md-6">
@@ -69,6 +71,7 @@
           <!--button to go back to the tasklists page-->
           <a href="{{ url('/tasks') }}" class="btn btn-secondary btn-md float-end  mx-2" title="Back to Task Lists">Cancel</a><br><br>
         </form>
+        </div>
       </div>
     </div>
   </div>
