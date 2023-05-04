@@ -35,17 +35,6 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="name"><b>Start Date</b></label>
-              <input type="date" name="created_at" id="created_at" class="form-control " value="{{ ('created_at') }}" />
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group">
-              <label for="name"><b>End Date</b></label>
-              <input type="date" name="deadline_at" id="deadline_at" class="form-control" value="{{ ('deadline_at') }}" />
-                            </div>
           <div class="col-md-12">
             <div class="text-center" style="margin-top:30px;margin-bottom:10px">
               <input type="submit" value="Save" class="btn btn-success btn-md float-end" style="background-color: #2AAA8A; color:white;">
