@@ -11,41 +11,52 @@
                     </div>
                 </form>
             </div>
-            <br>
+            <br> 
             <div class="card">
                 <div class="table_section">
                     <table class="table table-striped">
                         <thead>
                             <tr class="text-center">
-                                <th class="col-sm-5">Tasklist Name</th>
-                                <th class="col-sm-3">Deadline</th>
-                                <th class="col-sm-1">Status</th>
-                                <th class="col-sm-3">Actions</th>
+                                <th class="col-sm-1"><center>ID</th>
+                                <th class="col-sm-2"><center>Task List Name</th>
+                                <th class="col-sm-2"><center>Duration</th>
+                                <th class="col-sm-2"><center>Status</th>
+                                <th class="col-sm-2"><center>Last Updated</th>
+                                <th class="col-sm-3"><center>Manage</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($tasklists as $tasklist)
                             <tr>
-                                <td class= "align-middle">{{ $tasklist->name }}</td>
-                                <td class="text-center align-middle">
-                                    @if ($tasklist->deadline_at)
-                                        {{ \Carbon\Carbon::parse($tasklist->deadline_at)->format('m-d-Y H:i:s') }}
+                                <td class="align-middle"><center>{{ $tasklist->id }}</td>
+                                    <td class= "align-middle"><center>{{ $tasklist->name }}</td>
+                                    <td class="text-center align-middle">
+                                    @if ($tasklist->created_at)
+                                       {{ \Carbon\Carbon::parse($tasklist->created_at)->format('m-d-Y') }}
                                     @endif
-                                </td>
-                                <td class="text-center align-middle">
-                                    <span class="badge rounded-pill 
-                                        @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])
-                                            bg-success
-                                        @else
-                                            bg-danger
-                                        @endif
-                                        ">
-                                        @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])
-                                        Completed
-                                        @else
-                                        Pending
-                                        @endif
-                                    </span>
+                                    <br>     
+                                    @if ($tasklist->deadline_at)
+                                        {{ \Carbon\Carbon::parse($tasklist->deadline_at)->format('m-d-Y') }}
+                                     @endif       
+                                 </td>
+                                    <td class="text-center align-middle">
+                                        <span class="badge rounded-pill 
+                                            @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])
+                                                bg-success
+                                            @else
+                                                bg-danger
+                                            @endif
+                                            ">
+                                            @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])
+                                            Completed
+                                            @else
+                                            Pending
+                                            @endif
+                                        </span>
+                                        </td>
+                                    </td>
+                                    <td class="text-center align-middle">
+                                    {{ \Carbon\Carbon::parse($tasklist->updated_at)->diffForHumans() }}
                                 </td>
                                 <td class="text-center">
                                     <a href="{{ url('/tasklists/' . $tasklist->id) }}" title="View Task"><button class="btn btn-outline-info btn-sm m-1"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
