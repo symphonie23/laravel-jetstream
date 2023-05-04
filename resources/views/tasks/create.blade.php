@@ -31,28 +31,17 @@
           </div><br>
 
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="name"><b>Start Date</b></label>
                 <input type="datetime-local" name="start_date" id="start_date" class="form-control " value="">
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="name"><b>End Date</b></label>
                 <input type="datetime-local" name="deadline_at" id="deadline_at" class="form-control" value="{{ ('deadline_at') }}" />
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="status"><b>Status</b></label>
-                <select name="status" id="status" class="form-control select2" style="width:100%">
-                  <option value="">..........</option>
-                  <option value="0" >Pending</option>
-                  <option value="1" >Completed</option>
-                </select>
               </div>
             </div>
           </div><br>
@@ -69,7 +58,7 @@
           <!--save button-->
           <input type="submit" value="Save" class="btn btn-success btn-md float-end" style="background-color: #2AAA8A; color:white;">
           <!--button to go back to the tasklists page-->
-          <a href="{{ url('/tasks') }}" class="btn btn-secondary btn-md float-end  mx-2" title="Back to Task Lists">Cancel</a><br><br>
+          <a href="{{ url('/tasks') }}" class="btn btn-secondary btn-md float-end  mx-2" title="Back to Task Lists">Cancel</a><br>
         </form>
         </div>
       </div>

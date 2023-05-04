@@ -3,6 +3,14 @@
 <head>
 
 <style>
+ul.expandable {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+ul.expandable.collapsed > li {
+  display: none;
+}
 
 .table-container {
     margin-left: 200px;
@@ -27,12 +35,12 @@
 
 .sidebar ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding-top: 10px;
 }
 
 .sidebar ul li {
-  margin-bottom: 10px;
+  padding-left: 6px;
+  padding-top: 10px;
 }
 
 .sidebar ul li a {
@@ -88,39 +96,55 @@
 </head>
 <body>
 <div class="container">
-<div class="sidebar">
-  <ul>
-  <li>
-    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Dashboard') }}</x-nav-link>
-  </li>
+  <div class="sidebar">
+    <ul>
+      <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Dashboard') }}</x-nav-link>
+    </ul>
 
-  <li>
-    <x-nav-link href="{{ route('tasklists.index') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Task Lists') }}</x-nav-link>
-  </li>
+    <ul class="expandable collapsed">
+      <x-nav-link style="color:white;">{{ __('Task List') }}</x-nav-link>
+      <li>
+        <x-nav-link href="{{ route('tasklists.index') }}" :active="request()->routeIs('tasklists.index')" style="color:white;">{{ __('All Task Lists') }}</x-nav-link>
+      </li>
 
-  <li>
-    <a href="{{ url('/tasklists/create') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Create New Tasklist') }}</a>
-  </li>
+      <li>
+        <x-nav-link href="{{ route('tasklists.create') }}" :active="request()->routeIs('tasklists.create')" style="color:white;">{{ __('Create New Task List') }}</x-nav-link>
+      </li>
+    </ul>
 
-  <li>
-		<x-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Tasks') }}</x-nav-link>
-	</li>
+    <ul class="expandable collapsed">
+      <x-nav-link style="color:white;">{{ __('Task') }}</x-nav-link>
+      <li>
+        <x-nav-link href="{{ route('tasks.index') }}" :active="request()->routeIs('tasks.index')" style="color:white;">{{ __('All Tasks') }}</x-nav-link>
+      </li>
+      <li>
+        <x-nav-link href="{{ route('tasks.create') }}" :active="request()->routeIs('tasks.create')" style="color:white;">{{ __('Create New Task') }}</x-nav-link>
+      </li>
+    </ul>
 
-  <li>
-    <a href="{{ url('/tasks/create') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Create New Task') }}</a>
-  </li>
-
-  <li><a href="#">Menu Item 4</a></li>
-  </ul>
+    <ul>
+      <x-nav-link style="color:white;">{{ __('More Items') }}</x-nav-link>
+    </ul>
+  </div>
 </div>
 <!--
 <div class="toggle-button" onclick="toggleSidebar()">Toggle Sidebar</div>
 -->
 <script>
-function toggleSidebar() {
-  var sidebar = document.querySelector('.sidebar');
-  sidebar.classList.toggle('hidden');
-}
+const expandableLists = document.querySelectorAll('.expandable');
+
+expandableLists.forEach(expandableList => {
+  expandableList.classList.add('collapsed'); // set initial state to collapsed
+  expandableList.addEventListener('click', e => {
+    if (e.target.tagName === 'UL') { // only toggle when UL is clicked
+      if (expandableList.classList.contains('collapsed')) { // check if it is collapsed
+        expandableList.classList.remove('collapsed');
+      } else {
+        expandableList.classList.add('collapsed');
+      }
+    }
+  });
+});
 </script>
 </body>
 </html>
