@@ -1,3 +1,11 @@
+<?php
+/**
+ * Blade view for displaying a single task.
+ *
+ * Available variables:
+ * @var \App\Models\Task $tasks The task to display.
+ */
+?>
 <x-app-layout>
   @include('layouts.side-bar')
   <div class="container-fluid col-md-10 position-absolute end-0">

@@ -1,6 +1,21 @@
+<?php
+/**
+ * Blade view file for displaying a list of task lists.
+ *
+ * This file defines the HTML markup for a page that displays a table of task lists
+ * and provides links to view, edit, and delete individual tasks. The task lists are
+ * retrieved from the database using the `$tasklists` variable, and the number of
+ * completed and total tasks for each task list is calculated using the `$counts`
+ * variable.
+ *
+ * @var \Illuminate\Pagination\LengthAwarePaginator $tasklists The collection of task lists to display.
+ * @var array $counts An array mapping task list IDs to the number of completed and total tasks for each task list.
+ */
+?>
 <x-app-layout>
 @include('layouts.side-bar')
-    <div class="container-fluid col-md-10 position-absolute end-0">
+    <div class="container-fluid col-md-12 position-absolute end-0">
+    <div class="table-container">
         <div class="card p-3 bg-body-tertiary">
             <div class="table_header">
                 <h1><b>Task Lists</b></h1>
@@ -11,7 +26,7 @@
                     </div>
                 </form>
             </div>
-            <br> 
+            <br>
             <div class="card">
                 <div class="table_section">
                     <table class="table table-striped">
@@ -27,33 +42,32 @@
                         <tbody>
                             @foreach($tasklists as $tasklist)
                             <tr>
-                                    <td class= "align-middle"><center>{{ $tasklist->name }}</td>
-                                    <td class="text-center align-middle">
+                                <td class="align-middle text-center">{{ $tasklist->name }}</td>
+                                <td class="text-center align-middle">
                                     @if ($tasklist->created_at)
-                                       {{ \Carbon\Carbon::parse($tasklist->created_at)->format('m-d-Y') }}
+                                        {{ \Carbon\Carbon::parse($tasklist->created_at)->format('m-d-Y') }}
                                     @endif
-                                    <br>     
+                                    <br>
                                     @if ($tasklist->deadline_at)
                                         {{ \Carbon\Carbon::parse($tasklist->deadline_at)->format('m-d-Y') }}
-                                     @endif       
-                                 </td>
-                                    <td class="text-center align-middle">
-                                        <span class="badge rounded-pill 
-                                            @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])
-                                                bg-success
-                                            @else
-                                                bg-danger
-                                            @endif
-                                            ">
-                                            @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])
+                                    @endif
+                                </td>
+                                <td class="text-center align-middle">
+                                    <span class="badge rounded-pill 
+                                        @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])
+                                            bg-success
+                                        @else
+                                            bg-danger
+                                        @endif
+                                        ">
+                                        @if ($counts[$tasklist->id]['completed'] == $counts[$tasklist->id]['total'])
                                             Completed
-                                            @else
+                                        @else
                                             Pending
-                                            @endif
-                                        </span>
-                                        </td>
-                                    </td>
-                                    <td class="text-center align-middle">
+                                        @endif
+                                    </span>
+                                </td>
+                                <td class="text-center align-middle">
                                     {{ \Carbon\Carbon::parse($tasklist->updated_at)->diffForHumans() }}
                                 </td>
                                 <td class="text-center">
@@ -73,8 +87,9 @@
             </div>
             <br>
             <div class="container1">
-            {{ $tasklists->links() }}
+                {{ $tasklists->links() }}
             </div>
         </div>
     </div>
+</div>
 </x-app-layout>
