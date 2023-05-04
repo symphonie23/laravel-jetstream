@@ -92,6 +92,31 @@
 			}
 
 
+.toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.hide-sidebar .container {
+  margin-left: 0;
+}
+
+.hide-sidebar .sidebar {
+  margin-left: -200px;
+}
+
+.hide-sidebar .table-container {
+  margin: auto;
+  max-width: 100%;
+}
+
 	</style>
 </head>
 <body>

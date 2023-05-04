@@ -4,7 +4,7 @@
     <div class="table-container">
         <div class="card p-3 bg-body-tertiary">
             <div class="table_header">
-                <h2>Task Lists</h2>
+                <h1><b>Task Lists</b></h1>
                 <form action="{{ url('/tasklists') }}" method="GET">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search" name="search">

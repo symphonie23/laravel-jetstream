@@ -4,7 +4,7 @@
     <div class="table-container">
       <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
       <div class="card-header">
-        <br><center><h1>Create Task</h1><br>
+        <br><center><h1><b>Create Task</b></h1><br>
       </div><br>
 
       <div class="card">
