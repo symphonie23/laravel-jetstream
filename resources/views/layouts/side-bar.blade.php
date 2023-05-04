@@ -59,6 +59,31 @@
   z-index: 1;
 }
 
+.toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.hide-sidebar .container {
+  margin-left: 0;
+}
+
+.hide-sidebar .sidebar {
+  margin-left: -200px;
+}
+
+.hide-sidebar .table-container {
+  margin: auto;
+  max-width: 100%;
+}
+
 	</style>
 </head>
 <body>
@@ -88,6 +113,9 @@
   <li><a href="#">Menu Item 4</a></li>
   </ul>
 </div>
+<!--
+<div class="toggle-button" onclick="toggleSidebar()">Toggle Sidebar</div>
+-->
 <script>
 function toggleSidebar() {
   var sidebar = document.querySelector('.sidebar');

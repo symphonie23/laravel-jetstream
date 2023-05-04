@@ -3,7 +3,7 @@
   <div class="container-fluid col-md-10 position-absolute end-0">
     <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
       <div class="card-header">
-        <br><center><h1>Edit Task</h1><br>
+        <br><center><h1><b>Edit Task</b></h1><br>
       </div><br>
       <div class="card">
         <div class= "p-4">
