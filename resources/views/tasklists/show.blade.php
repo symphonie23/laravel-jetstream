@@ -72,7 +72,7 @@
             </div>
             <br>
             <div class="container1">
-                PAGINATE HERE
+            {{ $tasks->links() }}
             </div>
         </div>
     </div>

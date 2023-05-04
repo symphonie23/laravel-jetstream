@@ -42,34 +42,35 @@
               </div>
             </div><br>
 
-            <div class="row">
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="name"><b>Start Date</b></label>
-                  <input type="datetime-local" name="start_date" id="start_date" class="form-control " value="">
-                </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name"><b>Start Date</b></label>
+                <input type="datetime-local" name="start_date" id="start_date" class="form-control " value="">
               </div>
 
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="name"><b>End Date</b></label>
-                  <input type="datetime-local" name="deadline_at" id="deadline_at" class="form-control" value="{{ ('deadline_at') }}" />
-                </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name"><b>End Date</b></label>
+                <input type="datetime-local" name="deadline_at" id="deadline_at" class="form-control" value="{{ ('deadline_at') }}" />
               </div>
-            </div><br>
+            </div>
+          </div><br>
 
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="name"><b>Description</b></label>
-                  <textarea name="desc" id="desc" class="form-control" rows="5"></textarea>
-                </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="name"><b>Description</b></label>
+                <textarea name="desc" id="desc" class="form-control" rows="5"></textarea>
               </div>
-            </div><br>
+            </div>
+          </div><br>
 
-            <input type="submit" value="Save" class="btn btn-success btn-md float-end" style="background-color: #2AAA8A; color:white;">
-            <a href="{{ url('/tasks') }}" class="btn btn-secondary btn-md float-end  mx-2" title="Back to Task Lists">Cancel</a><br><br>
-          </form>
+          <!--save button-->
+          <input type="submit" value="Save" class="btn btn-success btn-md float-end" style="background-color: #2AAA8A; color:white;">
+          <!--button to go back to the tasklists page-->
+          <a href="{{ url('/tasks') }}" class="btn btn-secondary btn-md float-end  mx-2" title="Back to Task Lists">Cancel</a><br>
+        </form>
         </div>
       </div>
     </div>
