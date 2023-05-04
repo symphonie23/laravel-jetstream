@@ -1,5 +1,14 @@
+<?php
+/**
+ * View for displaying a task list and its associated tasks.
+ *
+ * @param \App\Models\TaskList $tasklist The task list to display.
+ * @param \Illuminate\Pagination\LengthAwarePaginator $tasks A paginator containing the tasks to display.
+ * @return void
+ */
+?>
 <x-app-layout>
-@include('layouts.side-bar')
+    @include('layouts.side-bar')
     <div class="container-fluid col-md-10 position-absolute end-0">
         <div class="card p-3 bg-body-tertiary">
             <div class="table_header">
@@ -24,29 +33,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($tasks->sortBy('deadline_at') as $item)
+                            @foreach($tasks->sortBy('deadline_at') as $item)
                             <tr>
-                            <td class="align-middle">{{ $item->name }}</td>
-                            <td class="text-center align-middle">
+                                <td class="align-middle">{{ $item->name }}</td>
+                                <td class="text-center align-middle">
                                     @if ($item->deadline_at)
                                         {{ \Carbon\Carbon::parse($item->deadline_at)->format('m-d-Y H:i:s') }}
                                     @endif
                                 </td>
                                 <td class="text-center align-middle">
-                                        @if($item->finished_at)
-                                            <span class="badge bg-success">DONE</span>
-                                        @else
-                                            <span class="badge bg-danger">NOT DONE</span>
-                                        @endif
-                                        </td>
-
+                                    @if($item->finished_at)
+                                        <span class="badge bg-success">DONE</span>
+                                    @else
+                                        <span class="badge bg-danger">NOT DONE</span>
+                                    @endif
+                                </td>
                                 <td class="text-center">
-                                    <a href="{{ url('/tasks/' . $item->id) }}" title="View Task"><button class="btn btn-outline-info btn-sm m-1"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                    <a href="{{ url('/tasks/' . $item->id . '/edit') }}" title="Edit Task"><button class="btn btn-outline-primary btn-sm m-1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                    <a href="{{ url('/tasks/' . $item->id) }}" title="View Task">
+                                        <button class="btn btn-outline-info btn-sm m-1"><i class="fa fa-eye" aria-hidden="true"></i> View</button>
+                                    </a>
+                                    <a href="{{ url('/tasks/' . $item->id . '/edit') }}" title="Edit Task">
+                                        <button class="btn btn-outline-primary btn-sm m-1"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                                    </a>
                                     <form method="POST" action="{{ url('/tasks/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
-                                        <button type="submit" class="btn btn-outline-danger btn-sm m-1" title="Delete Task" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                        <button type="submit" class="btn btn-outline-danger btn-sm m-1" title="Delete Task" onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                        </button>
                                     </form>
                                 </td>
                             </tr>

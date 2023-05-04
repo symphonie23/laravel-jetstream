@@ -99,7 +99,7 @@
   </li>
 
   <li>
-    <a href="{{ url('/tasklists/create') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Create New Tasklist') }}</a>
+    <a href="{{ url('/tasklists/create') }}" :active="request()->routeIs('dashboard')" style="color:white;">{{ __('Create New Task List') }}</a>
   </li>
 
   <li>
@@ -112,6 +112,7 @@
 
   <li><a href="#">Menu Item 4</a></li>
   </ul>
+</div>
 </div>
 <!--
 <div class="toggle-button" onclick="toggleSidebar()">Toggle Sidebar</div>

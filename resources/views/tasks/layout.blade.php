@@ -175,13 +175,11 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" integrity="sha384-XTv/b+tAVgby+IhXKjGtRyLh0+mFVCgYAK1mTXHmIwvALhswz1lV3qMJqiQe+/o5" crossorigin="anonymous">
   </head>
-  <body>
+<body>
   <div style="position: absolute; top: 0; left: 0; width: 100%; height: 130%; background-color: rgba(0, 0, 0, 0.5); z-index: -1;"></div>
   <br><br><br>
-   <div class="container">
+  <div class="container">
     @yield('content')
   </div>
-</div>
-</div>
 </body>
 </html>
