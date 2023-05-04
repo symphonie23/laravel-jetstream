@@ -1,6 +1,7 @@
 <x-app-layout>
   @include('layouts.side-bar')
-  <div class="container-fluid col-md-10 position-absolute end-0">
+  <div class="container-fluid col-md-12 position-absolute end-0">
+    <div class="table-container">
     <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
       <div class="card-header">
         <br><center><h1>Create Tasklist</h1><br>
