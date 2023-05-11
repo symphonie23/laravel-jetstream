@@ -63,6 +63,7 @@ class Task extends Model
                     'finished_at',
                     'deadline_at',
                     'created_by',
+                    'deleted_at',
                     'deleted_by'
                 ];
     
