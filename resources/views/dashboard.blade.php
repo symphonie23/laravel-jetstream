@@ -4,7 +4,7 @@
         <div class="table-container">
             <div class="card shadow p-3 mb-5 bg-body-tertiary rounded">
             <div class="card-header">
-                <br><h1><b>Dashboard</b></h1><br>
+                <br><h1><b>Dashyboard</b></h1><br>
             </div>
 
             <div class= "p-1 d-flex justify-content-around">
